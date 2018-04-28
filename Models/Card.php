@@ -39,6 +39,19 @@ class Card
 		return $cards;
 	}
 	
+	public static function newestCard(): Card
+	{
+		$db = Database::getInstance();
+		
+		$stmt = $db->prepare("CALL getNewest()");
+		
+		$stmt->execute();
+		
+		$card = $stmt->fetch();
+		
+		return new Card($card["ID"], $card["Name"], $card["Rarity"], $card["AddDate"], $card["Rating"], $card["GameID"], $card["getRarity(Rating)"], $card["ImageFile"]);
+	}
+	
 	public static function searchCards(string $searchQuery)
 	{
 		$cards = array();

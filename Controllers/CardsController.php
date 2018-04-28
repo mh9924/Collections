@@ -4,6 +4,7 @@ class CardsController
 	
 	public function index()
 	{
+		// $newest_card = Card::newestCard();
 		$cards = Card::allCards();
 		
 		require_once("Views/Cards/index.php");
