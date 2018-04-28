@@ -30,7 +30,8 @@ function call($controller, $action)
 
 $controllers = array('Pages' => ['home', 'error'],
 						'Cards' => ['index', 'search'],
-						'Games' => ['index', 'byUser']);
+						'Games' => ['index', 'byUser'],
+						'Users' => ['viewProfile']);
 
 if (array_key_exists($controller, $controllers))
 	if (in_array($action, $controllers[$controller])) 
