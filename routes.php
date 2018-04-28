@@ -1,43 +1,42 @@
 <?php
-  function call($controller, $action) {
-    require_once('Controllers/' . $controller . 'Controller.php');
+function call($controller, $action)
+{
+	require_once('Controllers/' . $controller . 'Controller.php');
 
-    switch($controller) 
+	switch($controller)
 	{
-	  case 'Pages':
-		$controller = new PagesController();
-		break;
+		case 'Pages':
+			$controller = new PagesController();
+			break;
 		
-      case 'Cards':
-		require_once('Models/Card.php');
-		$controller = new CardsController();
-		break;
+		case 'Cards':
+			require_once('Models/Card.php');
+			$controller = new CardsController();
+			break;
+
+		case 'Games':
+			require_once('Models/UserGame.php');
+			$controller = new GamesController();
+			break;
 		
-	  case 'Games':
-		require_once('Models/UserGame.php');
-		$controller = new GamesController();
-		break;
-		
-	  case 'User':
-		require_once('Models/User.php');
-		$controller = new UserController();
-		break;
-    }
+		case 'User':
+			require_once('Models/User.php');
+			$controller = new UserController();
+			break;
+	}
 
-    $controller->{ $action }();
-  }
+	$controller->{$action}();
+}
 
-  $controllers = array('Pages' => ['home', 'error'],
-					   'Cards' => ['index', 'search'],
-					   'Games' => ['index', 'byUser']);
+$controllers = array('Pages' => ['home', 'error'],
+						'Cards' => ['index', 'search'],
+						'Games' => ['index', 'byUser']);
 
-  if (array_key_exists($controller, $controllers)) {
-    if (in_array($action, $controllers[$controller])) {
-      call($controller, $action);
-    } else {
-      call('Pages', 'error');
-    }
-  } else {
-    call('Pages', 'error');
-  }
+if (array_key_exists($controller, $controllers))
+	if (in_array($action, $controllers[$controller])) 
+		call($controller, $action);
+	else 
+		call('Pages', 'error');
+else
+	call('Pages', 'error');
 ?>
