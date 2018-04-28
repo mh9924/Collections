@@ -14,9 +14,13 @@
 		break;
 		
 	  case 'Games':
-		require_once('Models/Game.php');
 		require_once('Models/UserGame.php');
 		$controller = new GamesController();
+		break;
+		
+	  case 'User':
+		require_once('Models/User.php');
+		$controller = new UserController();
 		break;
     }
 
