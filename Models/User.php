@@ -30,14 +30,22 @@ class User
 		return new User($user["userID"], $user["Username"], $user["RegistrationDate"]);
 	}
 	
-	/* public function cards(): array
+	public function games(): array
 	{
+		$games = array();
 		$db = Database::getInstance();
 		
 		$stmt = $db->prepare("
 			SELECT *
-			FROM Card
-			WHERE 
+			FROM Game
+			WHERE UserID = :id
+		");
+		
+		$stmt->execute(array("id" => $this->id));
+		
+		foreach ($stmt->fetchAll() as $game)
+			$games[] = new Game($game["gameID"], $game["Name"], $game["Fields"], $game["UserID"]);
 			
-	*/
+		return $games;		
+	}
 }

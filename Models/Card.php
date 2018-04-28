@@ -9,12 +9,12 @@ class Card
 	public $rating;
 	public $gameID;
 	
-	public function __construct($id, $name, $rarity, $addDate, $rating, $gameID, $rarityComment, $imageFile)
+	public function __construct($id, $name, $addDate, $rarity=0, $rating=0, $gameID=0, $rarityComment="", $imageFile="")
 	{
 		$this->id = $id;
 		$this->name = $name;
-		$this->rarity = $rarity;
 		$this->addDate = $addDate;
+		$this->rarity = $rarity;
 		$this->rating = $rating;
 		$this->gameID = $gameID;
 		$this->rarityComment = $rarityComment;
@@ -34,10 +34,12 @@ class Card
 		$stmt->execute();
 		
 		foreach ($stmt->fetchAll() as $card)
-			$cards[] = new Card($card["ID"], $card["Name"], $card["Rarity"], $card["AddDate"], $card["Rating"], $card["GameID"], $card["getRarity(Rating)"], $card["ImageFile"]);
+			$cards[] = new Card($card["ID"], $card["Name"], $card["AddDate"], $card["Rarity"], $card["Rating"], $card["GameID"], $card["getRarity(Rating)"], $card["ImageFile"]);
 			
 		return $cards;
 	}
+	
+	
 	
 	public static function newestCard(): Card
 	{
@@ -49,7 +51,7 @@ class Card
 		
 		$card = $stmt->fetch();
 		
-		return new Card($card["ID"], $card["Name"], $card["Rarity"], $card["AddDate"], $card["Rating"], $card["GameID"], $card["getRarity(Rating)"], $card["ImageFile"]);
+		return new Card(0, $card["Name"], $card["AddDate"]);
 	}
 	
 	public static function searchCards(string $searchQuery)
@@ -66,7 +68,7 @@ class Card
 		$stmt->execute(array('searchQuery' => "%$searchQuery%"));
 		
 		foreach ($stmt->fetchAll() as $card)
-			$cards[] = new Card($card["ID"], $card["Name"], $card["Rarity"], $card["AddDate"], $card["Rating"], $card["GameID"], $card["getRarity(Rating)"], $card["ImageFile"]);
+			$cards[] = new Card($card["ID"], $card["Name"], $card["AddDate"], $card["Rarity"], $card["Rating"], $card["GameID"], $card["getRarity(Rating)"], $card["ImageFile"]);
 		
 		return $cards;
 	}

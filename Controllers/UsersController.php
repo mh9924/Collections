@@ -8,6 +8,7 @@ class UserController
 			return call("Pages", "error");
 		
 		$user = User::userByID($_GET["userID"]);
+		$games = $user->games();
 		
 		require_once("Views/Users/profile.php");
 	}

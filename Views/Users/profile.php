@@ -5,8 +5,25 @@
 				<h2>User Profile: <?php echo $user->username; ?></h2>
 				<p class="lead">
 				
-				Registered on <?php echo $user->registrationDate; ?>
+				Registered on <?php echo date("Y-m-d", $user->registrationDate); ?>
 				
+				<h3>Games</h3>
+				<table class="table">
+						<thead>
+							<tr>
+								<th>Name</th>
+								<th>Fields</th>
+							</tr>
+						</thead>
+					<tbody>
+					<?php foreach ($games as $game) { ?>
+						<tr>
+							<td><?php echo $game->name; ?></td>
+							<td><?php echo $game->fields; ?></td>
+						</tr>
+					<?php } ?>
+					</tbody>
+				</table>
 				</p>
 		</div>
 	</div>
