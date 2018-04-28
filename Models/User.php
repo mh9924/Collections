@@ -6,7 +6,12 @@ class User
 	public $username;
 	public $registrationDate;
 	
-	public function __construct
+	public function __construct($id, $username, $registrationDate)
+	{
+		$this->id = $id;
+		$this->username = $username;
+		$this->registrationDate = $registrationDate;
+	}
 	
 	public static function userByID(int $id): User
 	{
@@ -18,7 +23,7 @@ class User
 			WHERE userID = :id
 		");
 		
-		$stmt->execute();
+		$stmt->execute(array("id" => $id));
 		
 		$user = $stmt->fetch();
 		
@@ -35,3 +40,4 @@ class User
 			WHERE 
 			
 	*/
+}

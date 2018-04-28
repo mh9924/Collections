@@ -19,7 +19,7 @@ function call($controller, $action)
 			$controller = new GamesController();
 			break;
 		
-		case 'User':
+		case 'Users':
 			require_once('Models/User.php');
 			$controller = new UserController();
 			break;

@@ -24,7 +24,7 @@
 								<td><?php echo $game->name; ?></td>
 								<td><?php echo $game->fields; ?></td>
 								<td><?php echo $game->numCards(); ?></td>
-								<td><?php echo $game->username; ?></td>
+								<td><a href="?controller=Users&action=viewProfile&userID=<?php echo $game->userID; ?>"><?php echo $game->username; ?></a></td>
 							</tr>
 						<?php } ?>
 					</table>
