@@ -4,11 +4,11 @@ class Database
 	
 	private static $instance = NULL;
 	
-    private function __construct() {}
+	private function __construct() {}
 
-    private function __clone() {}
+	private function __clone() {}
 
-    public static function getInstance() 
+	public static function getInstance() 
 	{
 		if (!isset(self::$instance)) 
 		{
@@ -17,6 +17,6 @@ class Database
 		}
 		
 		return self::$instance;
-    }
+	}
 }
 ?>
