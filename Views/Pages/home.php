@@ -10,7 +10,7 @@
 		<div class="row">
 			<div class="col-lg-8 mx-auto">
 				<h2>About</h2>
-				<p class="lead">Welcome to Collections! Login or create an account to make decks, games, or browse other users' cards.</p>
+				<p class="lead">Welcome to Collections! Login or create an account to make decks, games, or browse other users' collections.</p>
 			</div>
 		</div>
 	</div>
