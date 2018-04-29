@@ -39,6 +39,9 @@
               <a class="nav-link js-scroll-trigger" href="./?controller=Cards&action=index">Cards</a>
             </li>
 			<li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="./?controller=Decks&action=index">Decks</a>
+            </li>
+			<li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="./?controller=Games&action=index">Games</a>
             </li>
           </ul>

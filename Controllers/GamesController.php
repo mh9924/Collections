@@ -9,3 +9,4 @@ class GamesController
 		require_once("Views/Games/index.php");
 	}
 }
+?>

@@ -70,3 +70,4 @@ class Game
 		return $stmt->fetch()[0];
 	}
 }
+?>

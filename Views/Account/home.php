@@ -3,7 +3,7 @@
 		<div class="row">
 			<div class="col-lg-8 mx-auto">
 				<h2>My Account</h2>
-				<h6><a href="?controller=Account&action=logout">LOGOUT</a></h6>
+				<h6><a href="#">SETTINGS</a> | <a href="?controller=Account&action=logout">LOGOUT</a></h6>
 				<p class="lead">Browse your games</p>
 				
 				<div class="table-responsive">
@@ -21,6 +21,9 @@
 								<td><?php echo $game->numCards(); ?></td>
 							</tr>
 						<?php } ?>
+							<tr>
+								<td><a href="?controller=Account&action=addGame">+ Add Game...</a></td>
+							</tr>
 					</table>
 				</div>
 			</div>

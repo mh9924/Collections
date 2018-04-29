@@ -17,3 +17,4 @@ class UserController
 		require_once("Views/Users/profile.php");
 	}
 }
+?>

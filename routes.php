@@ -7,10 +7,17 @@ function call($controller, $action)
 	{
 		case 'Account':
 			require_once('Models/AuthenticationService.php');
-			require_once('Models/User.php');
 			require_once('Models/Card.php');
 			require_once('Models/Deck.php');
+			require_once('Models/Game.php');
+			require_once('Models/User.php');
 			$controller = new AccountController();
+			break;
+			
+		case 'Decks':
+			require_once('Models/User.php');
+			require_once('Models/Deck.php');
+			$controller = new DecksController();
 			break;
 		
 		case 'Cards':
@@ -40,7 +47,8 @@ function call($controller, $action)
 
 $controllers = array('Account' => ['home', 'login', 'logout', 'addCard', 'addDeck'],
 						'Cards' => ['index', 'search'],
-						'Games' => ['index', 'byUser'],
+						'Decks' => ['index'],
+						'Games' => ['index'],
 						'Pages' => ['home', 'error'],
 						'Users' => ['viewProfile']);
 
