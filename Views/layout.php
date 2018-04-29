@@ -33,17 +33,18 @@
               <a class="nav-link js-scroll-trigger" href="./">Home</a>
             </li>
 			<li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="./?controller=Account&action=home">Account</a>
+              <a class="nav-link js-scroll-trigger" href="./?controller=Account&action=home">My Account</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="./?controller=Cards&action=index">Cards</a>
-            </li>
-			<li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="./?controller=Decks&action=index">Decks</a>
-            </li>
-			<li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="./?controller=Games&action=index">Games</a>
-            </li>
+			<li class ="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					Browse
+				</a>
+				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+					<a class="dropdown-item" href="./?controller=Cards&action=index">Cards</a>
+					<a class="dropdown-item" href="./?controller=Decks&action=index">Decks</a>
+					<a class="dropdown-item" href="./?controller=Games&action=index">Games</a>
+				</div>
+			</li>
           </ul>
         </div>
       </div>
@@ -54,7 +55,7 @@
      <!-- Footer -->
     <footer class="py-5 bg-dark">
       <div class="container">
-        <p class="m-0 text-center text-white">&copy; 2018 David Alligood, Russell Bader, Matthew Harris.</p>
+        <p class="m-0 text-center text-white">Copyright &copy; 2018 David Alligood, Matthew Harris, Rusty Bader</p>
       </div>
       <!-- /.container -->
     </footer>
