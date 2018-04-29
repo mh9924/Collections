@@ -25,7 +25,7 @@ class AuthenticationService
 		
 		$dbPassword = $stmt->fetch()[0];
 		
-		if (!password_verify($password, $dbPassword)
+		if (!password_verify($password, $dbPassword))
 		{
 			$this->error = "Invalid password";
 			return false;
