@@ -60,4 +60,5 @@ class AccountController
 		}
 		
 		// require_once("Views/Cards/search.php");
+	}
 }
