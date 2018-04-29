@@ -26,7 +26,6 @@
 								<h6>MOST RECENT CARD</h6>
 								<h5 class="card-title"><?php echo $newestCard->name; ?></h5>
 								<p class="card-text">Added On: <?php echo date("Y-m-d", $newestCard->addDate); ?></p>
-								<a href="#" class="btn btn-primary">View user's decks</a>
 						</div>
 				</div>
 	
@@ -35,7 +34,6 @@
 								<h6>OLDEST CARD</h6>
 								<h5 class="card-title"><?php echo $oldestCard->name; ?></h5>
 								<p class="card-text">Added On: <?php echo date("Y-m-d", $oldestCard->addDate); ?></p>
-								<a href="#" class="btn btn-primary">View user's decks</a>
 						</div>
 				</div>
 				
@@ -67,7 +65,7 @@
 								Rating: <?php echo $card->rating; ?>
 								(<?php echo $card->tierDenotation(); ?>)
 								</p>
-								<a href="#" class="btn btn-primary">View user's decks</a>
+								<a href="?controller=Users&action=viewProfile&userID=<?php echo $card->user()->id; ?>" class="btn btn-primary">View user profile</a>
 						</div>
 					</div>
 				<?php } ?>

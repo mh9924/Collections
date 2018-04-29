@@ -37,7 +37,7 @@
 								(<?php echo $card->tierDenotation(); ?>)
 								</p>
 								
-								<a href="#" class="btn btn-primary">View user's decks</a>
+								<a href="?controller=Users&action=viewProfile&userID=<?php echo $card->user()->id; ?>" class="btn btn-primary">View user profile</a>
 						</div>
 					</div>
 				<?php } ?>
