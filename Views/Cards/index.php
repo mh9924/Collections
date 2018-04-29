@@ -4,6 +4,8 @@
 			<div class="col-lg-8 mx-auto">
 				<h2>Cards</h2>
 	
+				<p class="lead">Browse cards</p>
+				
 				<div class="card" style="width: 49%;margin: 0 auto;margin-bottom:10px;display: inline-block;">
 						<div class="card-body">
 								<h6>MOST RECENT CARD</h6>
@@ -21,8 +23,7 @@
 								<a href="#" class="btn btn-primary">View user's decks</a>
 						</div>
 				</div>
-					
-				<p class="lead">Browse cards</p>
+				
 				<form method="GET">
 					<input type="hidden" name="controller" value="Cards">
 					<input type="hidden" name="action" value="search">

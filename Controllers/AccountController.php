@@ -28,7 +28,6 @@ class AccountController
 			
 			if ($loginSuccess)
 			{
-				session_start();
 				$_SESSION["username"] = $_POST["username"];
 				return $this->home();
 			}
