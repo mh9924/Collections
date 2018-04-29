@@ -88,6 +88,28 @@ class Card
 		return $cards;
 	}
 	
+	public static function rarityCounts(): array
+	{
+		/* This function will return an associative array with key=rarity denotation and value=# cards with that rarity. */
+		
+		$rarityCounts = array();
+		$db = Database::getInstance();
+		
+		$stmt = $db->prepare("
+			SELECT getRarity(Rarity), Count(ID) 
+			FROM Card 
+			GROUP BY Rarity 
+			HAVING Rarity > 0
+		");
+		
+		$stmt->execute();
+		
+		foreach ($stmt->fetchAll() as $rarityCount)
+			$rarityCounts[$rarityCount["getRarity(Rarity)"]] = $rarityCount["Count(ID)"];
+			
+		return $rarityCounts;
+	}
+	
 	public function decks(): array
 	{
 		$decks = array();

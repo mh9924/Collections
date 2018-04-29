@@ -5,7 +5,22 @@
 				<h2>Cards</h2>
 	
 				<p class="lead">Browse cards</p>
+				Browse cards created by users. Currently, there are 
 				
+				<?php
+				$end = array_keys($rarityCounts);
+				$end = end($end);
+				
+				foreach ($rarityCounts as $rarity => $rarityCount) 
+				{
+					if ($rarity == $end)
+						echo "and " . $rarityCount . " " . $rarity . " cards.";
+					else
+						echo $rarityCount . " " . $rarity . " cards, ";
+				} 
+				?>
+				<br>
+				<br>
 				<div class="card" style="width: 49%;margin: 0 auto;margin-bottom:10px;display: inline-block;">
 						<div class="card-body">
 								<h6>MOST RECENT CARD</h6>

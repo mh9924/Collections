@@ -6,6 +6,7 @@ class CardsController
 	{
 		$newestCard = Card::newestCard();
 		$oldestCard = Card::oldestCard();
+		$rarityCounts = Card::rarityCounts();
 		$cards = Card::allCards();
 		
 		require_once("Views/Cards/index.php");
