@@ -3,9 +3,26 @@
 		<div class="row">
 			<div class="col-lg-8 mx-auto">
 				<h2>Cards</h2>
-				<p class="lead">
-				
-				Browse cards
+	
+				<div class="card" style="width: 49%;margin: 0 auto;margin-bottom:10px;display: inline-block;">
+						<div class="card-body">
+								<h6>MOST RECENT CARD</h6>
+								<h5 class="card-title"><?php echo $newestCard->name; ?></h5>
+								<p class="card-text">Added On: <?php echo date("Y-m-d", $newestCard->addDate); ?></p>
+								<a href="#" class="btn btn-primary">View deck</a>
+						</div>
+				</div>
+	
+				<div class="card" style="width: 49%;margin: 0 auto;margin-bottom:10px;display: inline-block;">
+						<div class="card-body">
+								<h6>OLDEST CARD</h6>
+								<h5 class="card-title"><?php echo $oldestCard->name; ?></h5>
+								<p class="card-text">Added On: <?php echo date("Y-m-d", $oldestCard->addDate); ?></p>
+								<a href="#" class="btn btn-primary">View deck</a>
+						</div>
+				</div>
+					
+				<p class="lead">Browse cards</p>
 				<form method="GET">
 					<input type="hidden" name="controller" value="Cards">
 					<input type="hidden" name="action" value="search">
@@ -26,9 +43,18 @@
 						<div class="card-body">
 								<h5 class="card-title"><?php echo $card->name; ?></h5>
 								<p class="card-text">Added On: <?php echo date("Y-m-d", $card->addDate); ?></p>
-								<p class="card-text">Rarity: <?php echo $card->rarity; ?></p>
-								<p class="card-text">Rating: <?php echo $card->rating; ?></p>
-								<p class="card-text">Comment: <?php echo $card->rarityComment; ?></p>
+								<p class="card-text">
+								Rarity: <?php echo $card->rarity; ?>
+								<?php if (!empty($card->rarityDenotation())) { ?>
+								(<?php echo $card->rarityDenotation(); ?>)
+								<?php } ?>
+								</p>
+								<p class="card-text">
+								Rating: <?php echo $card->rating; ?>
+								<?php if (!empty($card->tierDenotation())) { ?>
+								(<?php echo $card->tierDenotation(); ?>)
+								<?php } ?>
+								</p>
 								<a href="#" class="btn btn-primary">View deck</a>
 						</div>
 					</div>

@@ -15,7 +15,7 @@ function call($controller, $action)
 			break;
 
 		case 'Games':
-			require_once('Models/UserGame.php');
+			require_once('Models/Game.php');
 			$controller = new GamesController();
 			break;
 		

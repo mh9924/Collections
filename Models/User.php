@@ -44,7 +44,7 @@ class User
 		$stmt->execute(array("id" => $this->id));
 		
 		foreach ($stmt->fetchAll() as $game)
-			$games[] = new Game($game["gameID"], $game["Name"], $game["Fields"], $game["UserID"]);
+			$games[] = new Game($game["gameID"], $game["Name"], $game["Fields"], $this->id, $this->username);
 			
 		return $games;		
 	}

@@ -4,7 +4,8 @@ class CardsController
 	
 	public function index()
 	{
-		// $newest_card = Card::newestCard();
+		$newestCard = Card::newestCard();
+		$oldestCard = Card::oldestCard();
 		$cards = Card::allCards();
 		
 		require_once("Views/Cards/index.php");

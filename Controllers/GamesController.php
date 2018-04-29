@@ -4,7 +4,7 @@ class GamesController
 	
 	public function index()
 	{
-		$games = UserGame::allUserGames();
+		$games = Game::allGames();
 		
 		require_once("Views/Games/index.php");
 	}

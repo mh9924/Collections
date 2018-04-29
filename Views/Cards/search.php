@@ -26,9 +26,21 @@
 						<div class="card-body">
 								<h5 class="card-title"><?php echo $card->name; ?></h5>
 								<p class="card-text">Added On: <?php echo date("Y-m-d", $card->addDate); ?></p>
-								<p class="card-text">Rarity: <?php echo $card->rarity; ?></p>
-								<p class="card-text">Rating: <?php echo $card->rating; ?></p>
-								<p class="card-text">Comment: <?php echo $card->rarityComment; ?></p>
+								
+								<p class="card-text">
+								Rarity: <?php echo $card->rarity; ?>
+								<?php if (!empty($card->rarityDenotation())) { ?>
+								(<?php echo $card->rarityDenotation(); ?>)
+								<?php } ?>
+								</p>
+								
+								<p class="card-text">
+								Rating: <?php echo $card->rating; ?>
+								<?php if (!empty($card->tierDenotation())) { ?>
+								(<?php echo $card->tierDenotation(); ?>)
+								<?php } ?>
+								</p>
+								
 								<a href="#" class="btn btn-primary">View deck</a>
 						</div>
 					</div>

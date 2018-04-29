@@ -6,13 +6,15 @@ class Game
 	public $name;
 	public $fields;
 	public $userID;
+	public $username;
 	
-	public function __construct($id, $name, $fields, $userID)
+	public function __construct($id, $name, $fields, $userID, $username)
 	{
 		$this->id = $id;
 		$this->name = $name;
 		$this->fields = $fields;
 		$this->userID = $userID;
+		$this->username = $username;
 	}
 	
 	public static function allGames(): array
@@ -21,14 +23,15 @@ class Game
 		$db = Database::getInstance();
 		
 		$stmt = $db->prepare("
-			SELECT *
-			FROM Game;
+			SELECT * 
+			FROM Game 
+			NATURAL JOIN User
 		");
 		
 		$stmt->execute();
 		
 		foreach ($stmt->fetchAll() as $game)
-			$games[] = new Game($game["gameID"], $game["Name"], $game["Fields"], $game["UserID"]);
+			$games[] = new Game($game["gameID"], $game["Name"], $game["Fields"], $game["UserID"], $game["Username"]);
 			
 		return $games;
 	}
@@ -47,7 +50,7 @@ class Game
 		$stmt->execute(array("searchQuery" => "%$searchQuery%"));
 		
 		foreach ($stmt->fetchAll() as $game)
-			$games[] = new Game($game["gameID"], $game["Name"], $game["Fields"], $game["UserID"]);
+			$games[] = new Game($game["gameID"], $game["Name"], $game["Fields"], $game["UserID"], $game["Username"]);
 		
 		return $games;
 	}
