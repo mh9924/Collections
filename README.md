@@ -66,3 +66,5 @@ CALL getNewest()
 *(line 45 of Models/Card.php)*
 
 - [ ] **Trigger**
+
+- [x] **Additional Queries**
