@@ -2,7 +2,13 @@
 Project for databases course. Live version available at /~mwh9924/Collections/
 
 # Checklist
-- [ ] **Two Table Join**
+- [x] **Two Table Join** - Get all games with username of creator for each.
+```sql
+SELECT * 
+FROM Game 
+NATURAL JOIN User
+```
+*(line 25 of Game.php)*
 
 - [x] **Three Table Join** - Find the owner of a card by card ID:
 
