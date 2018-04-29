@@ -42,7 +42,7 @@
 						<?php } ?>
 						<div class="card-body">
 								<h5 class="card-title"><?php echo $card->name; ?></h5>
-								<p class="card-text">Added On: <?php echo date("Y-m-d", $card->addDate); ?></p>
+								<p class="card-text">Added On: <?php echo date("Y-m-d", $card->addDate); ?> by <?php echo $card->user()->username; ?></p>
 								<p class="card-text">
 								Rarity: <?php echo $card->rarity; ?>
 								<?php if (!empty($card->rarityDenotation())) { ?>

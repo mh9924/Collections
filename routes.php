@@ -10,6 +10,7 @@ function call($controller, $action)
 			break;
 		
 		case 'Cards':
+			require_once('Models/User.php');
 			require_once('Models/Card.php');
 			$controller = new CardsController();
 			break;

@@ -88,6 +88,25 @@ class Card
 		return $cards;
 	}
 	
+	public function user(): User
+	{
+		$db = Database::getInstance();
+		
+		$stmt = $db->prepare("
+			SELECT User.userID, Username, RegistrationDate 
+			FROM User
+			INNER JOIN Game on Game.UserID = User.userID
+			INNER JOIN Card on Card.GameID = Game.gameID
+			WHERE Card.ID = :id
+		");
+		
+		$stmt->execute(array("id" => $this->id));
+		
+		$userInfo = $stmt->fetch();
+		
+		return new User($userInfo["userID"], $userInfo["Username"], $userInfo["RegistrationDate"]);
+	}
+	
 	public function rarityDenotation()
 	{
 		$db = Database::getInstance();

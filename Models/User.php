@@ -13,7 +13,7 @@ class User
 		$this->registrationDate = $registrationDate;
 	}
 	
-	public static function userByID(int $id): User
+	public static function userByID(int $id)
 	{
 		$db = Database::getInstance();
 		
@@ -27,7 +27,10 @@ class User
 		
 		$user = $stmt->fetch();
 		
-		return new User($user["userID"], $user["Username"], $user["RegistrationDate"]);
+		if ($stmt->rowCount() == 1)
+			return new User($user["userID"], $user["Username"], $user["RegistrationDate"]);
+		else
+			return false;
 	}
 	
 	public function games(): array
