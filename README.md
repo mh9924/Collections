@@ -6,11 +6,11 @@ Project for databases course. Live version available at /~mwh9924/Collections/
 
 - [x] **Three Table Join** - Find the owner of a card by card ID:
 
-SELECT User.userID, Username, RegistrationDate 
-FROM User
-INNER JOIN Game on Game.UserID = User.userID
-INNER JOIN Card on Card.GameID = Game.gameID
-WHERE Card.ID = :id
+SELECT User.userID, Username, RegistrationDate \
+FROM User\
+INNER JOIN Game on Game.UserID = User.userID\
+INNER JOIN Card on Card.GameID = Game.gameID\
+WHERE Card.ID = :id\
 *(line 95 of Models/Card.php)*
       
 - [ ] **Self Join**
