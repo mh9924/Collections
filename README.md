@@ -8,7 +8,7 @@ SELECT *
 FROM Game 
 NATURAL JOIN User
 ```
-*(line 25 of Game.php)*
+*(line 25 of Models/Game.php)*
 
 - [x] **Three Table Join** - Find the owner of a card by card ID:
 
