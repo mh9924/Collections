@@ -20,7 +20,11 @@ class AccountController
 		if (isset($_POST["username"], $_POST["password"]))
 		{
 			if (empty($_POST["username"]) || empty($_POST["password"]))
+			{
 				$error = "Please complete all fields.";
+				require_once("Views/Account/login.php");
+				return;
+			}
 			
 			$auth = new AuthenticationService();
 			
