@@ -2,7 +2,7 @@
 Project for databases course. Live version available at /~mwh9924/Collections/
 
 # Checklist
-- [] **Two Table Join**
+- [ ] **Two Table Join**
 
 - [x] **Three Table Join** - Find the owner of a card by card ID:
 
@@ -13,7 +13,7 @@ INNER JOIN Card on Card.GameID = Game.gameID
 WHERE Card.ID = :id
 *(line 95 of Models/Card.php)*
       
-- [] **Self Join**
+- [ ] **Self Join**
 
 - [x] **Aggregate Function** - Counts how many cards are in an individual's collection by a given game ID:
 
@@ -22,7 +22,7 @@ FROM Card
 WHERE Card.GameID = :id
 *(line 62 of Models/Game.php)*
 
-- [] **Aggregate Function using GROUP BY and HAVING**
+- [ ] **Aggregate Function using GROUP BY and HAVING**
 
 SELECT COUNT(Card.ID)
 FROM Card
@@ -47,4 +47,4 @@ SELECT tierList(:rating)
 CALL getNewest()
 *(line 45 of Models/Card.php)*
 
-- [] **Trigger**
+- [ ] **Trigger**
