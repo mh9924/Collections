@@ -2,7 +2,7 @@
 Project for databases course. Live version available at /~mwh9924/Collections/
 
 # Checklist
-- [x] **Two Table Join** - Get all games with username of creator for each on website:
+- [x] **Two Table Join** - Get all games with username of creator for each on website games page:
 ```sql
 SELECT * 
 FROM Game 
