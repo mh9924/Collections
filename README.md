@@ -38,7 +38,7 @@ WHERE Card.GameID = :id
 SELECT getRarity(Rarity), Count(ID) 
 FROM Card 
 GROUP BY Rarity 
-HAVING Rarity > 0
+HAVING Rarity > :minRarity
 ```
 *(rarityCounts() function of Models/Card.php)*
 
