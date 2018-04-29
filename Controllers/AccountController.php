@@ -4,14 +4,16 @@ class AccountController
 	
 	public function home()
 	{
+		if(isset($_POST["username"]))
+			die();
+		
 		if (!isset($_SESSION["username"]))
 		{
 			require_once("Views/Account/login.php");
 			return;
 		}
 		
-		$user = User::userByName($_SESSION["username"]);	
-		
+		$user = User::userByName($_SESSION["username"]);
 	}
 	
 	public function login()

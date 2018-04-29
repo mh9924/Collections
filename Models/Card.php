@@ -88,6 +88,25 @@ class Card
 		return $cards;
 	}
 	
+	public function decks(): array
+	{
+		$decks = array();
+		$db = Database::getInstance();
+		
+		$stmt = $db->prepare("
+			SELECT DeckID, Name, GameID
+			FROM Card
+			JOIN Belongs_To ON Belongs_To.CardID = Card.ID
+		");
+		
+		$stmt->execute();
+		
+		foreach ($stmt->fetchAll() as $deck)
+			$decks[] = new Deck($deck["DeckID"], $deck["Name"], $deck["GameID"]);
+			
+		return $decks;
+	}
+	
 	public function user(): User
 	{
 		$db = Database::getInstance();
@@ -95,8 +114,8 @@ class Card
 		$stmt = $db->prepare("
 			SELECT User.userID, Username, RegistrationDate 
 			FROM User
-			INNER JOIN Game on Game.UserID = User.userID
-			INNER JOIN Card on Card.GameID = Game.gameID
+			INNER JOIN Game ON Game.UserID = User.userID
+			INNER JOIN Card ON Card.GameID = Game.gameID
 			WHERE Card.ID = :id
 		");
 		
