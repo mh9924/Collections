@@ -2,7 +2,7 @@
 Project for databases course. Live version available at /~mwh9924/Collections/
 
 # Checklist
-- [x] **Two Table Join** - Get all games with username of creator for each.
+- [x] **Two Table Join** - Get all games with username of creator for each on website:
 ```sql
 SELECT * 
 FROM Game 
@@ -10,7 +10,7 @@ NATURAL JOIN User
 ```
 *(line 25 of Models/Game.php)*
 
-- [x] **Three Table Join** - Find the owner of a card by card ID:
+- [x] **Three Table Join** - Find the owner of a card by card ID (used for displaying username on cards page):
 
 ```sql
 SELECT User.userID, Username, RegistrationDate 
@@ -23,7 +23,7 @@ WHERE Card.ID = :id
       
 - [ ] **Self Join**
 
-- [x] **Aggregate Function** - Counts how many cards are in an individual's collection by a given game ID:
+- [x] **Aggregate Function** - Counts how many cards are in an individual's collection by a given game ID (used for displaying # cards on cards page and user profile):
 
 ```sql
 SELECT COUNT(GameID)
@@ -42,7 +42,7 @@ HAVING Card.Rarity = 4
 ```
 *(not yet implemented)*
 
-- [x] **Text-based Search Query** - Search for cards by name:
+- [x] **Text-based Search Query** - Search for cards by name on website:
 
 ```sql
 SELECT *
@@ -51,14 +51,14 @@ WHERE Name LIKE :searchQuery
 ```
 *(line 44 of Models/Game.php)*
 
-- [x] **Stored Function** - Displays tier denotation next to rating on website.
+- [x] **Stored Function** - Displays tier denotation next to rating on website:
 
 ```sql
 SELECT tierList(:rating)
 ```
 *(line 125 of Models/Card.php)*
 
-- [x] **Stored Procedure** - Displays the most recently added card on website.
+- [x] **Stored Procedure** - Displays the most recently added card on website:
 
 ```sql
 CALL getNewest()
