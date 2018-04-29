@@ -3,10 +3,7 @@ class AccountController
 {
 	
 	public function home()
-	{
-		if(isset($_POST["username"]))
-			die();
-		
+	{		
 		if (!isset($_SESSION["username"]))
 		{
 			require_once("Views/Account/login.php");
@@ -14,6 +11,8 @@ class AccountController
 		}
 		
 		$user = User::userByName($_SESSION["username"]);
+		
+		require_once("Views/Account/home.php");
 	}
 	
 	public function login()
