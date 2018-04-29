@@ -33,6 +33,26 @@ class User
 			return false;
 	}
 	
+	public static function userByName(string $username)
+	{
+		$db = Database::getInstance();
+		
+		$stmt = $db->prepare("
+			SELECT *
+			FROM User
+			WHERE Username = :username
+		");
+		
+		$stmt->execute(array("username" => $username));
+		
+		$user = $stmt->fetch();
+		
+		if ($stmt->rowCount() == 1)
+			return new User($user["userID"], $user["Username"], $user["RegistrationDate"]);
+		else
+			return false;
+	}
+	
 	public function games(): array
 	{
 		$games = array();

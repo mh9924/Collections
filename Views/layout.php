@@ -32,6 +32,9 @@
 			<li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="./">Home</a>
             </li>
+			<li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="./?controller=Account&action=home">Account</a>
+            </li>
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="./?controller=Cards&action=index">Cards</a>
             </li>

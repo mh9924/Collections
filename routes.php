@@ -5,8 +5,12 @@ function call($controller, $action)
 
 	switch($controller)
 	{
-		case 'Pages':
-			$controller = new PagesController();
+		case 'Account':
+			require_once('Models/AuthenticationService.php');
+			require_once('Models/User.php');
+			require_once('Models/Card.php');
+			require_once('Models/Deck.php');
+			$controller = new AccountController();
 			break;
 		
 		case 'Cards':
@@ -19,6 +23,10 @@ function call($controller, $action)
 			require_once('Models/Game.php');
 			$controller = new GamesController();
 			break;
+			
+		case 'Pages':
+			$controller = new PagesController();
+			break;
 		
 		case 'Users':
 			require_once('Models/User.php');
@@ -30,9 +38,10 @@ function call($controller, $action)
 	$controller->{$action}();
 }
 
-$controllers = array('Pages' => ['home', 'error'],
+$controllers = array('Account' => ['home', 'login', 'addCard', 'addDeck'],
 						'Cards' => ['index', 'search'],
 						'Games' => ['index', 'byUser'],
+						'Pages' => ['home', 'error'],
 						'Users' => ['viewProfile']);
 
 if (array_key_exists($controller, $controllers))
