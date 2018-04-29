@@ -38,22 +38,18 @@
 						<?php if (!empty($card->imageFile)) { ?>
 						<img style ="width: 50%;margin: auto;margin-top: 10px;display: block;" class="card-img-top" src="img/cards/<?php echo $card->imageFile; ?>" alt="Card image cap">
 						<?php } else { ?>		
-						No image yet.
+						<img style ="width: 50%;margin: auto;margin-top: 10px;display: block;" class="card-img-top" src="img/error/no-image.png" alt="Card image cap">
 						<?php } ?>
 						<div class="card-body">
 								<h5 class="card-title"><?php echo $card->name; ?></h5>
 								<p class="card-text">Added On: <?php echo date("Y-m-d", $card->addDate); ?> by <?php echo $card->user()->username; ?></p>
 								<p class="card-text">
 								Rarity: <?php echo $card->rarity; ?>
-								<?php if (!empty($card->rarityDenotation())) { ?>
 								(<?php echo $card->rarityDenotation(); ?>)
-								<?php } ?>
 								</p>
 								<p class="card-text">
 								Rating: <?php echo $card->rating; ?>
-								<?php if (!empty($card->tierDenotation())) { ?>
 								(<?php echo $card->tierDenotation(); ?>)
-								<?php } ?>
 								</p>
 								<a href="#" class="btn btn-primary">View user's decks</a>
 						</div>
