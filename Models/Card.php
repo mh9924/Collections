@@ -88,7 +88,7 @@ class Card
 		return $cards;
 	}
 	
-	public static function rarityCounts(): array
+	public static function rarityCounts(int $minRarity = 0): array
 	{
 		/* This function will return an associative array with key=rarity denotation and value=# cards with that rarity. */
 		
@@ -99,10 +99,10 @@ class Card
 			SELECT getRarity(Rarity), Count(ID) 
 			FROM Card 
 			GROUP BY Rarity 
-			HAVING Rarity > 0
+			HAVING Rarity >= :minRarity
 		");
 		
-		$stmt->execute();
+		$stmt->execute(array("minRarity" => $minRarity));
 		
 		foreach ($stmt->fetchAll() as $rarityCount)
 			$rarityCounts[$rarityCount["getRarity(Rarity)"]] = $rarityCount["Count(ID)"];
