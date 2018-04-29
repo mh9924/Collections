@@ -13,6 +13,7 @@
 							<tr>
 								<th>Name</th>
 								<th>Fields</th>
+								<th># Cards</th>
 							</tr>
 						</thead>
 					<tbody>
@@ -20,6 +21,7 @@
 						<tr>
 							<td><?php echo $game->name; ?></td>
 							<td><?php echo $game->fields; ?></td>
+							<td><?php echo $game->numCards(); ?></td>
 						</tr>
 					<?php } ?>
 					</tbody>
