@@ -9,7 +9,7 @@
 								<h6>MOST RECENT CARD</h6>
 								<h5 class="card-title"><?php echo $newestCard->name; ?></h5>
 								<p class="card-text">Added On: <?php echo date("Y-m-d", $newestCard->addDate); ?></p>
-								<a href="#" class="btn btn-primary">View deck</a>
+								<a href="#" class="btn btn-primary">View user's decks</a>
 						</div>
 				</div>
 	
@@ -18,7 +18,7 @@
 								<h6>OLDEST CARD</h6>
 								<h5 class="card-title"><?php echo $oldestCard->name; ?></h5>
 								<p class="card-text">Added On: <?php echo date("Y-m-d", $oldestCard->addDate); ?></p>
-								<a href="#" class="btn btn-primary">View deck</a>
+								<a href="#" class="btn btn-primary">View user's decks</a>
 						</div>
 				</div>
 					
@@ -34,9 +34,9 @@
 				</form>
 				
 				<?php foreach ($cards as $card){ ?>
-					<div class="card" style="width: 24rem;margin: 0 auto;margin-bottom:10px;">
+					<div class="card" style="width: 49%;margin: 0 auto;margin-bottom:10px;display: inline-block;">
 						<?php if (!empty($card->imageFile)) { ?>
-						<img style ="width: 50%;margin: 0 auto;margin-top: 10px;" class="card-img-top" src="img/cards/<?php echo $card->imageFile; ?>" alt="Card image cap">
+						<img style ="width: 50%;margin: auto;margin-top: 10px;display: block;" class="card-img-top" src="img/cards/<?php echo $card->imageFile; ?>" alt="Card image cap">
 						<?php } else { ?>		
 						No image yet.
 						<?php } ?>
@@ -55,7 +55,7 @@
 								(<?php echo $card->tierDenotation(); ?>)
 								<?php } ?>
 								</p>
-								<a href="#" class="btn btn-primary">View deck</a>
+								<a href="#" class="btn btn-primary">View user's decks</a>
 						</div>
 					</div>
 				<?php } ?>

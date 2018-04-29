@@ -17,9 +17,9 @@
 				</form>
 				
 				<?php foreach ($cards as $card){ ?>
-					<div class="card" style="width: 24rem;margin: 0 auto;margin-bottom:10px;">
+					<div class="card" style="width: 49%;margin: 0 auto;margin-bottom:10px;display: inline-block;">
 						<?php if (!empty($card->imageFile)) { ?>
-						<img style ="width: 50%;margin: 0 auto;margin-top: 10px;" class="card-img-top" src="img/cards/<?php echo $card->imageFile; ?>" alt="Card image cap">
+						<img style ="width: 50%;margin: auto;margin-top: 10px;display: block;" class="card-img-top" src="img/cards/<?php echo $card->imageFile; ?>" alt="Card image cap">
 						<?php } else { ?>		
 						No image yet.
 						<?php } ?>
@@ -41,7 +41,7 @@
 								<?php } ?>
 								</p>
 								
-								<a href="#" class="btn btn-primary">View deck</a>
+								<a href="#" class="btn btn-primary">View user's decks</a>
 						</div>
 					</div>
 				<?php } ?>
