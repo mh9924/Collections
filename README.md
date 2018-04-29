@@ -32,15 +32,15 @@ WHERE Card.GameID = :id
 ```
 *(numCards() function of Models/Game.php)*
 
-- [ ] **Aggregate Function using GROUP BY and HAVING**
+- [x] **Aggregate Function using GROUP BY and HAVING** - Card rarity statistics on Cards page.
 
 ```sql
-SELECT COUNT(Card.ID)
-FROM Card
-GROUP BY Card.Rarity
-HAVING Card.Rarity = 4
+SELECT getRarity(Rarity), Count(ID) 
+FROM Card 
+GROUP BY Rarity 
+HAVING Rarity > 0
 ```
-*(not yet implemented)*
+*(rarityCounts() function of Models/Card.php)*
 
 - [x] **Text-based Search Query** - Search for cards by name on website:
 
@@ -49,7 +49,7 @@ SELECT *
 FROM Game
 WHERE Name LIKE :searchQuery
 ```
-*(searchGames() of Models/Game.php)*
+*(searchGames() function of Models/Game.php)*
 
 - [x] **Stored Function** - Displays tier denotation next to rating on website:
 
