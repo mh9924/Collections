@@ -10,7 +10,7 @@ class AccountController
 			return;
 		}
 		
-		$user = User::userByName($_SESSION["username"]);
+		$currentUser = User::userByName($_SESSION["username"]);
 		
 		require_once("Views/Account/home.php");
 	}
@@ -34,9 +34,16 @@ class AccountController
 			}
 			else
 				$error = $auth->error;
-			
-			require_once("Views/Account/login.php");
 		}
+		
+		require_once("Views/Account/login.php");
+	}
+	
+	public function logout()
+	{
+		session_destroy();
+		
+		require_once("Views/Account/login.php");
 	}
 	
 	public function addCard()

@@ -38,7 +38,7 @@ function call($controller, $action)
 	$controller->{$action}();
 }
 
-$controllers = array('Account' => ['home', 'login', 'addCard', 'addDeck'],
+$controllers = array('Account' => ['home', 'login', 'logout', 'addCard', 'addDeck'],
 						'Cards' => ['index', 'search'],
 						'Games' => ['index', 'byUser'],
 						'Pages' => ['home', 'error'],
