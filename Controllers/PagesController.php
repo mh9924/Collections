@@ -7,7 +7,7 @@ class PagesController
 		require_once('Views/Pages/home.php');
 	}
 
-    public function error()
+	public function error()
 	{
 		require_once('Views/Pages/error.php');
 	}
