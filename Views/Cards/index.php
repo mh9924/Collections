@@ -24,7 +24,7 @@
 				<div class="card" style="width: 49%;margin: 0 auto;margin-bottom:10px;display: inline-block;">
 						<div class="card-body">
 								<h6>MOST RECENT CARD</h6>
-								<h5 class="card-title"><?php echo $newestCard->name; ?></h5>
+								<h5 class="card-title"><?php echo htmlspecialchars($newestCard->name); ?></h5>
 								<p class="card-text">Added On: <?php echo date("Y-m-d", $newestCard->addDate); ?></p>
 						</div>
 				</div>
@@ -32,7 +32,7 @@
 				<div class="card" style="width: 49%;margin: 0 auto;margin-bottom:10px;display: inline-block;">
 						<div class="card-body">
 								<h6>OLDEST CARD</h6>
-								<h5 class="card-title"><?php echo $oldestCard->name; ?></h5>
+								<h5 class="card-title"><?php echo htmlspecialchars($oldestCard->name); ?></h5>
 								<p class="card-text">Added On: <?php echo date("Y-m-d", $oldestCard->addDate); ?></p>
 						</div>
 				</div>
@@ -55,8 +55,8 @@
 						<img style ="width: 50%;margin: auto;margin-top: 10px;display: block;" class="card-img-top" src="img/error/no-image.png" alt="Card image cap">
 						<?php } ?>
 						<div class="card-body">
-								<h5 class="card-title"><?php echo $card->name; ?></h5>
-								<p class="card-text">Added On: <?php echo date("Y-m-d", $card->addDate); ?> by <?php echo $card->user()->username; ?></p>
+								<h5 class="card-title"><?php echo htmlspecialchars($card->name); ?></h5>
+								<p class="card-text">Added On: <?php echo date("Y-m-d", $card->addDate); ?> by <?php echo htmlspecialchars($card->user()->username); ?></p>
 								<p class="card-text">
 								Rarity: <?php echo $card->rarity; ?>
 								(<?php echo $card->rarityDenotation(); ?>)

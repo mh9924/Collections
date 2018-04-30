@@ -21,10 +21,10 @@
 						<tbody>
 						<?php foreach ($games as $game){ ?>
 							<tr>
-								<td><?php echo $game->name; ?></td>
-								<td><?php echo $game->fields; ?></td>
+								<td><?php echo htmlspecialchars($game->name); ?></td>
+								<td><?php echo htmlspecialchars($game->fields); ?></td>
 								<td><?php echo $game->numCards(); ?></td>
-								<td><a href="?controller=Users&action=viewProfile&userID=<?php echo $game->userID; ?>"><?php echo $game->username; ?></a></td>
+								<td><a href="?controller=Users&action=viewProfile&userID=<?php echo $game->userID; ?>"><?php echo htmlspecialchars($game->username); ?></a></td>
 							</tr>
 						<?php } ?>
 					</table>

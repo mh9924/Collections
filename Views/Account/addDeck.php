@@ -22,7 +22,7 @@
 						<select class="form-control" name="gameid" id="gameid">
 							<option value="0"></option>
 							<?php foreach ($userGames as $userGame) { ?>
-							<option value="<?php echo $userGame->id; ?>"><?php echo $userGame->name; ?></option>
+							<option value="<?php echo $userGame->id; ?>"><?php echo htmlspecialchars($userGame->name); ?></option>
 							<?php } ?>
 						</select>
 					</div>

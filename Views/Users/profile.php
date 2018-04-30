@@ -2,7 +2,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-8 mx-auto">
-				<h2>User Profile: <?php echo $user->username; ?></h2>
+				<h2>User Profile: <?php echo htmlspecialchars($user->username); ?></h2>
 				<p class="lead">
 				
 				Registered on <?php echo date("Y-m-d", $user->registrationDate); ?>
@@ -19,8 +19,8 @@
 					<tbody>
 					<?php foreach ($games as $game) { ?>
 						<tr>
-							<td><?php echo $game->name; ?></td>
-							<td><?php echo $game->fields; ?></td>
+							<td><?php echo htmlspecialchars($game->name); ?></td>
+							<td><?php echo htmlspecialchars($game->fields); ?></td>
 							<td><?php echo $game->numCards(); ?></td>
 						</tr>
 					<?php } ?>

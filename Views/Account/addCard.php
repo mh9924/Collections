@@ -46,7 +46,7 @@
 						<select class="form-control" name="gameid" id="gameid">
 							<option value="0"></option>
 							<?php foreach ($userGames as $userGame) { ?>
-							<option value="<?php echo $userGame->id; ?>"><?php echo $userGame->name; ?></option>
+							<option value="<?php echo $userGame->id; ?>"><?php echo htmlspecialchars($userGame->name); ?></option>
 							<?php } ?>
 						</select>
 						<br>
@@ -56,7 +56,7 @@
 						<?php } ?>
 						<?php foreach ($userDecks as $userDeck) { ?>
 						<br>
-						<input type="checkbox" value="<?php echo $userDeck->id; ?>" name="deckids[]"><?php echo $userDeck->name; ?>
+						<input type="checkbox" value="<?php echo $userDeck->id; ?>" name="deckids[]"><?php echo htmlspecialchars($userDeck->name); ?>
 						<?php } ?>
 					</div>
 					<button type="submit" class="btn btn-default" style="margin-bottom: 10px;">Add</button>

@@ -18,7 +18,7 @@
 						<tbody>
 						<?php foreach ($currentUser->games() as $game){ ?>
 							<tr>
-								<td><?php echo $game->name; ?></td>
+								<td><?php echo htmlspecialchars($game->name); ?></td>
 								<td><?php echo $game->numCards(); ?></td>
 							</tr>
 						<?php } ?>
@@ -46,10 +46,10 @@
 						<tbody>
 						<?php foreach ($currentUser->cards() as $card){ ?>
 							<tr>
-								<td><?php echo $card->name; ?></td>
+								<td><?php echo htmlspecialchars($card->name); ?></td>
 								<td><?php echo $card->rarity; ?></td>
 								<td><?php echo $card->rating; ?></td>
-								<td><?php echo $card->game()->name; ?></td>
+								<td><?php echo htmlspecialchars($card->game()->name); ?></td>
 								<td><?php echo date("Y-m-d", $card->addDate); ?></td>
 							</tr>
 						<?php } ?>
@@ -76,8 +76,8 @@
 						<tbody>
 						<?php foreach ($currentUser->decks() as $deck){ ?>
 							<tr>
-								<td><?php echo $deck->name; ?></td>
-								<td><?php echo $deck->game()->name; ?></td>
+								<td><?php echo htmlspecialchars($deck->name); ?></td>
+								<td><?php echo htmlspecialchars($deck->game()->name); ?></td>
 								<td><?php echo $deck->numCards; ?></td>
 							</tr>
 						<?php } ?>

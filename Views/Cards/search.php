@@ -24,7 +24,7 @@
 						<img style ="width: 50%;margin: auto;margin-top: 10px;display: block;" class="card-img-top" src="img/error/no-image.png" alt="Card image cap">
 						<?php } ?>
 						<div class="card-body">
-								<h5 class="card-title"><?php echo $card->name; ?></h5>
+								<h5 class="card-title"><?php echo htmlspecialchars($card->name); ?></h5>
 								<p class="card-text">Added On: <?php echo date("Y-m-d", $card->addDate); ?></p>
 								
 								<p class="card-text">

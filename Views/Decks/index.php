@@ -20,9 +20,9 @@
 						<tbody>
 						<?php foreach ($decks as $deck){ ?>
 							<tr>
-								<td><?php echo $deck->name; ?></td>
+								<td><?php echo htmlspecialchars($deck->name); ?></td>
 								<td><?php echo $deck->numCards; ?></td>
-								<td><a href="?controller=Users&action=viewProfile&userID=<?php echo $deck->user()->id; ?>"><?php echo $deck->user()->username; ?></a></td>
+								<td><a href="?controller=Users&action=viewProfile&userID=<?php echo $deck->user()->id; ?>"><?php echo htmlspecialchars($deck->user()->username); ?></a></td>
 							</tr>
 						<?php } ?>
 					</table>
