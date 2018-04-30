@@ -65,6 +65,6 @@ CALL getNewest()
 ```
 *(newestCard() function of Models/Card.php)*
 
-- [ ] **Trigger**
+- [x] **Trigger** - When adding a new card, the user can choose to include it in one or more decks. The NumOfCards column for each deck will automatically be incremented.
 
 - [x] **Additional Queries**
