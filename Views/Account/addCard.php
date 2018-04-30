@@ -4,7 +4,7 @@
 			<div class="col-lg-8 mx-auto">
 				<h2>My Account</h2>
 				<h6><a href="?controller=Account&action=home">HOME</a> | <a href="#">SETTINGS</a> | <a href="?controller=Account&action=logout">LOGOUT</a></h6>
-				<p class="lead">Add a card</p>
+				<p><h4>Add a card</h4></p>
 				<?php 
 				if (isset($addErrors)) {
 					foreach ($addErrors as $addError) { ?>

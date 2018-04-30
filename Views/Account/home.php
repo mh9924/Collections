@@ -23,7 +23,7 @@
 							</tr>
 						<?php } ?>
 							<tr>
-								<td><a href="?controller=Account&action=addGame">+ Add Game...</a></td>
+								<td><a href="?controller=Account&action=addGame">+ Create Game...</a></td>
 							</tr>
 					</table>
 				</div>
