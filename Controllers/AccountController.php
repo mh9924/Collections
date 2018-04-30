@@ -79,7 +79,7 @@ class AccountController
 			
 			if (!is_numeric($rarity) || !is_numeric($rating) || $rarity < 1 || $rarity > 5 || $rating < 1 || $rating > 10)
 			{
-				$addErrors[] = "Rarity/rating must be between 1-5, 1-10 respectively.";
+				$addErrors[] = "Rarity/rating # must be between 1-5, 1-10 respectively.";
 				require_once("Views/Account/addCard.php");
 				return;
 			}
@@ -100,6 +100,8 @@ class AccountController
 			}
 			
 			$currentUser->addCard($name, $rarity, $rating, $gameid);
+			
+			return $this->home();
 		}
 		
 		require_once("Views/Account/addCard.php");
