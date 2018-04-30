@@ -38,8 +38,8 @@
 							<tr>
 								<th>Name</th>
 								<th>Rarity</th>
-								<th>Added On</th>
 								<th>Rating</th>
+								<th>Added On</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -47,8 +47,8 @@
 							<tr>
 								<td><?php echo $card->name; ?></td>
 								<td><?php echo $card->rarity; ?></td>
-								<td><?php echo date("Y-m-d", $card->addDate); ?></td>
 								<td><?php echo $card->rating; ?></td>
+								<td><?php echo date("Y-m-d", $card->addDate); ?></td>
 							</tr>
 						<?php } ?>
 							<tr>
