@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-ini_set('display_errors', true); 
+// ini_set('display_errors', true); 
   
 define('__ROOT__', dirname(dirname(__FILE__))); 
   
