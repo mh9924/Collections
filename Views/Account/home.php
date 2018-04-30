@@ -50,7 +50,7 @@
 							</tr>
 						<?php } ?>
 							<tr>
-								<td><a href="?controller=Account&action=addGame">+ Add Card...</a></td>
+								<td><a href="?controller=Account&action=addCard">+ Add Card...</a></td>
 							</tr>
 					</table>
 				</div>
