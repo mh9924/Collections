@@ -111,6 +111,23 @@ class Card
 		return $rarityCounts;
 	}
 	
+	public function game(): Game
+	{
+		$db = Database::getInstance();
+		
+		$stmt = $db->prepare("
+			SELECT *
+			FROM Game
+			WHERE gameID = :gameID
+		");
+		
+		$stmt->execute(array("gameID" => $this->gameID));
+		
+		$gameInfo = $stmt->fetch();
+		
+		return new Game($gameInfo["gameID"], $gameInfo["Name"], $gameInfo["Fields"], $gameInfo["UserID"], $this->user()->username);
+	}
+	
 	public function decks(): array
 	{
 		$decks = array();

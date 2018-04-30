@@ -14,7 +14,7 @@ class Game
 		$this->name = $name;
 		$this->fields = $fields;
 		$this->userID = $userID;
-		$this->username = $username;
+		$this->username = $username; // Included for required natural (two-table) join
 	}
 	
 	public static function allGames(): array

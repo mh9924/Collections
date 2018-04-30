@@ -114,7 +114,7 @@ class User
 		return $cards;
 	}
 	
-	public function addCard(string $name, int $rarity, int $rating, int $gameID)
+	public function addCard(string $name, int $rarity, int $rating, int $gameID): int
 	{
 		$db = Database::getInstance();
 		
@@ -124,6 +124,53 @@ class User
 			VALUES (:name, :rarity, :addDate, :rating, :gameID)
 		");
 		
-		$stmt->execute(array("name" => $name, "rarity" => $rarity, "addDate" => time(), "rating" => $rating, "gameID" => $gameID));	
+		$stmt->execute(array("name" => $name, "rarity" => $rarity, "addDate" => time(), "rating" => $rating, "gameID" => $gameID));
+		
+		return $db->lastInsertId();
+	}
+	
+	public function addDeck(string $name, int $gameID): int
+	{
+		$db = Database::getInstance();
+		
+		$stmt = $db->prepare("
+			INSERT INTO Deck
+			(Name, GameID, NumOfCards)
+			VALUES (:name, :gameID, 0)
+		");
+		
+		$stmt->execute(array("name" => $name, "gameID" => $gameID));
+		
+		return $db->lastInsertId();
+	}
+	
+	public function addGame(string $name, string $fields): int
+	{
+		$db = Database::getInstance();
+		
+		$stmt = $db->prepare("
+			INSERT INTO Game
+			(Name, Fields, UserID)
+			VALUES (:name, :fields, :id)
+		");
+		
+		$stmt->execute(array("name" => $name, "fields" => $fields, "id" => $this->id));
+		
+		return $db->lastInsertId();
+	}
+	
+	public function addBelongsTo(int $cardID, int $deckID): int
+	{
+		$db = Database::getInstance();
+		
+		$stmt = $db->prepare("
+			INSERT INTO Belongs_To
+			(CardID, DeckID)
+			VALUES (:cardID, :deckID)
+		");
+		
+		$stmt->execute(array("cardID" => $cardID, "deckID" => $deckID));
+		
+		return $db->lastInsertId();
 	}
 }

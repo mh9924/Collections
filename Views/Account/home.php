@@ -3,7 +3,7 @@
 		<div class="row">
 			<div class="col-lg-8 mx-auto">
 				<h2>My Account</h2>
-				<h6><a href="#">SETTINGS</a> | <a href="?controller=Account&action=logout">LOGOUT</a></h6>
+				<h6><a href="?controller=Account&action=home">HOME</a> | <a href="#">SETTINGS</a> | <a href="?controller=Account&action=logout">LOGOUT</a></h6>
 				<br>
 				<h4>My Games</h4>
 				
@@ -30,7 +30,7 @@
 				
 				<h4>My Cards</h4>
 				
-				<p class="lead">After making a game, you can add cards to it.</p>
+				<p class="lead">After making a game, you can add cards to it. When adding a card, you can also place it in any decks you want.</p>
 				
 				<div class="table-responsive">
 					<table class="table">
@@ -39,6 +39,7 @@
 								<th>Name</th>
 								<th>Rarity</th>
 								<th>Rating</th>
+								<th>Game</th>
 								<th>Added On</th>
 							</tr>
 						</thead>
@@ -48,6 +49,7 @@
 								<td><?php echo $card->name; ?></td>
 								<td><?php echo $card->rarity; ?></td>
 								<td><?php echo $card->rating; ?></td>
+								<td><?php echo $card->game()->name; ?></td>
 								<td><?php echo date("Y-m-d", $card->addDate); ?></td>
 							</tr>
 						<?php } ?>
@@ -67,6 +69,7 @@
 						<thead>
 							<tr>
 								<th>Name</th>
+								<th>Game</th>
 								<th># Cards</th>
 							</tr>
 						</thead>
@@ -74,11 +77,12 @@
 						<?php foreach ($currentUser->decks() as $deck){ ?>
 							<tr>
 								<td><?php echo $deck->name; ?></td>
+								<td><?php echo $deck->game()->name; ?></td>
 								<td><?php echo $deck->numCards; ?></td>
 							</tr>
 						<?php } ?>
 							<tr>
-								<td><a href="?controller=Account&action=addCard">+ Add Deck...</a></td>
+								<td><a href="?controller=Account&action=addDeck">+ Add Deck...</a></td>
 							</tr>
 					</table>
 				</div>

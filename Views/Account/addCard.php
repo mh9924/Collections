@@ -3,7 +3,7 @@
 		<div class="row">
 			<div class="col-lg-8 mx-auto">
 				<h2>My Account</h2>
-				<h6><a href="#">SETTINGS</a> | <a href="?controller=Account&action=logout">LOGOUT</a></h6>
+				<h6><a href="?controller=Account&action=home">HOME</a> | <a href="#">SETTINGS</a> | <a href="?controller=Account&action=logout">LOGOUT</a></h6>
 				<p class="lead">Add a card</p>
 				<?php 
 				if (isset($addErrors)) {
@@ -42,13 +42,22 @@
 							<option value="10">10</option>
 						</select>
 						<br>
-						<label for="rating">Add to Game:</label>
+						<label for="gameid">Add to Game:</label>
 						<select class="form-control" name="gameid" id="gameid">
 							<option value="0"></option>
 							<?php foreach ($userGames as $userGame) { ?>
 							<option value="<?php echo $userGame->id; ?>"><?php echo $userGame->name; ?></option>
 							<?php } ?>
 						</select>
+						<br>
+						<label for="decks">Add to Decks (Optional):</label>
+						<?php if (sizeof($userDecks) == 0) { ?>
+						<p>You don't have any decks yet.</p>
+						<?php } ?>
+						<?php foreach ($userDecks as $userDeck) { ?>
+						<br>
+						<input type="checkbox" value="<?php echo $userDeck->id; ?>" name="deckids[]"><?php echo $userDeck->name; ?>
+						<?php } ?>
 					</div>
 					<button type="submit" class="btn btn-default" style="margin-bottom: 10px;">Add</button>
 				</form>
