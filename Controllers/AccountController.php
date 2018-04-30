@@ -71,37 +71,26 @@ class AccountController
 			$gameid = $_POST["gameid"];
 			
 			if (strlen($name) > 50 || strlen($name) == 0)
-			{
 				$addErrors[] = "That card name is too long or short. 50 characters max.";
-				require_once("Views/Account/addCard.php");
-				return;
-			}
 			
-			if (!is_numeric($rarity) || !is_numeric($rating) || $rarity < 1 || $rarity > 5 || $rating < 1 || $rating > 10)
-			{
-				$addErrors[] = "Rarity/rating # must be between 1-5, 1-10 respectively.";
-				require_once("Views/Account/addCard.php");
-				return;
-			}
+			if (!is_numeric($rarity) || !is_numeric($rating) || $rarity < 1 || $rarity > 4 || $rating < 1 || $rating > 10)
+				$addErrors[] = "Please choose a rarity/rating.";
 			
 			// Check if posted game ID actually belongs to user.
 			$gameFound = false;
 			
 			foreach ($userGames as $userGame)
-			{
 				if ($userGame->id == $gameid)
 					$gameFound = true;
-			}
 			
 			if (!$gameFound)
+				$addErrors[] = "Please select a game, or make one if you haven't already.";
+			
+			if (empty($addErrors))
 			{
-				require_once("Views/Account/addCard.php");
-				return;
+				$currentUser->addCard($name, $rarity, $rating, $gameid);
+				return $this->home();
 			}
-			
-			$currentUser->addCard($name, $rarity, $rating, $gameid);
-			
-			return $this->home();
 		}
 		
 		require_once("Views/Account/addCard.php");
