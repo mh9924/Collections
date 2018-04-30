@@ -72,6 +72,27 @@ class User
 		return $games;		
 	}
 	
+	public function decks(): array
+	{
+		$decks = array();
+		$db = Database::getInstance();
+		
+		$stmt = $db->prepare("
+			SELECT ID, Deck.Name, Deck.GameID, NumOfCards
+			FROM Deck
+			JOIN Game ON Deck.GameID = Game.gameID
+			JOIN User on Game.UserID = User.userID
+			WHERE User.userID = :id
+		");
+		
+		$stmt->execute(array("id" => $this->id));
+		
+		foreach ($stmt->fetchAll() as $deck)
+			$decks[] = new Deck($deck["ID"], $deck["Name"], $deck["GameID"], $deck["NumOfCards"]);
+			
+		return $decks;
+	}
+	
 	public function cards(): array
 	{
 		$cards = array();
@@ -82,7 +103,7 @@ class User
 			FROM Card
 			JOIN Game ON Card.GameID = Game.gameID
 			JOIN User on Game.UserID = User.userID
-			WHERE User.userID = :id;
+			WHERE User.userID = :id
 		");
 		
 		$stmt->execute(array("id" => $this->id));
