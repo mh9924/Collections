@@ -71,4 +71,17 @@ class User
 			
 		return $games;		
 	}
+	
+	public function addCard(string $name, int $rarity, int $rating, int $gameID)
+	{
+		$db = Database::getInstance();
+		
+		$stmt = $db->prepare("
+			INSERT INTO Card
+			(Name, Rarity, AddDate, Rating, GameID)
+			VALUES (:name, :rarity, :addDate, :rating, :gameID)
+		");
+		
+		$stmt->execute(array("name" => $name, "rarity" => $rarity, "addDate" => time(), "rating" => $rating, "gameID" => $gameID));	
+	}
 }

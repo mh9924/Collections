@@ -58,7 +58,51 @@ class AccountController
 			return;
 		}
 		
-		// require_once("Views/Cards/search.php");
+		$currentUser = User::userByName($_SESSION["username"]);
+		$userGames = $currentUser->games();
+		
+		if (isset($_POST["name"], $_POST["rarity"], $_POST["rating"], $_POST["gameid"]))
+		{
+			$addErrors = array();
+			
+			$name = $_POST["name"];
+			$rarity = $_POST["rarity"];
+			$rating = $_POST["rating"];
+			$gameid = $_POST["gameid"];
+			
+			if (strlen($name) > 50 || strlen($name) == 0)
+			{
+				$addErrors[] = "That card name is too long or short. 50 characters max.";
+				require_once("Views/Account/addCard.php");
+				return;
+			}
+			
+			if (!is_numeric($rarity) || !is_numeric($rating) || $rarity < 1 || $rarity > 5 || $rating < 1 || $rating > 10)
+			{
+				$addErrors[] = "Rarity/rating must be between 1-5, 1-10 respectively.";
+				require_once("Views/Account/addCard.php");
+				return;
+			}
+			
+			// Check if posted game ID actually belongs to user.
+			$gameFound = false;
+			
+			foreach ($userGames as $userGame)
+			{
+				if ($userGame->id == $gameid)
+					$gameFound = true;
+			}
+			
+			if (!$gameFound)
+			{
+				require_once("Views/Account/addCard.php");
+				return;
+			}
+			
+			$currentUser->addCard($name, $rarity, $rating, $gameid);
+		}
+		
+		require_once("Views/Account/addCard.php");
 	}
 	
 	public function addDeck()
@@ -69,6 +113,8 @@ class AccountController
 			require_once("Views/Account/login.php");
 			return;
 		}
+		
+		$currentUser = User::userByName($_SESSION["username"]);
 		
 		// require_once("Views/Cards/search.php");
 	}
