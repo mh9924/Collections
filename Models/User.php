@@ -72,6 +72,27 @@ class User
 		return $games;		
 	}
 	
+	public function cards(): array
+	{
+		$cards = array();
+		$db = Database::getInstance();
+		
+		$stmt = $db->prepare("
+			SELECT Card.ID, Card.Name, Card.Rarity, Card.AddDate, Card.Rating, Card.GameID, Card.ImageFile
+			FROM Card
+			JOIN Game ON Card.GameID = Game.gameID
+			JOIN User on Game.UserID = User.userID
+			WHERE User.userID = :id;
+		");
+		
+		$stmt->execute(array("id" => $this->id));
+		
+		foreach ($stmt->fetchAll() as $card)
+			$cards[] = new Card($card["ID"], $card["Name"], $card["AddDate"], $card["Rarity"], $card["Rating"], $card["GameID"], $card["ImageFile"]);
+			
+		return $cards;
+	}
+	
 	public function addCard(string $name, int $rarity, int $rating, int $gameID)
 	{
 		$db = Database::getInstance();
