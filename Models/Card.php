@@ -4,10 +4,11 @@ class Card
 	
 	public $id;
 	public $name;
-	public $rarity;
 	public $addDate;
+	public $rarity;
 	public $rating;
 	public $gameID;
+	public $imageFile;
 	
 	public function __construct($id, $name, $addDate, $rarity=0, $rating=0, $gameID=0, $imageFile="")
 	{
