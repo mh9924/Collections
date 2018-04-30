@@ -45,7 +45,7 @@ function call($controller, $action)
 	$controller->{$action}();
 }
 
-$controllers = array('Account' => ['home', 'login', 'logout', 'addCard', 'addDeck', 'addGame'],
+$controllers = array('Account' => ['home', 'register', 'login', 'logout', 'addCard', 'addDeck', 'addGame'],
 						'Cards' => ['index', 'search'],
 						'Decks' => ['index'],
 						'Games' => ['index'],

@@ -15,6 +15,45 @@ class AccountController
 		require_once("Views/Account/home.php");
 	}
 	
+	public function register()
+	{
+		if (isset($_POST["username"], $_POST["password"], $_POST["password2"]))
+		{
+			$username = $_POST["username"];
+			$password = $_POST["password"];
+			$password2 = $_POST["password2"];
+			
+			$registerErrors = array();
+			
+			if (empty($username) || empty($password) || empty($password2))
+			{
+				$registerErrors[] = "Please complete all fields.";
+				require_once("Views/Account/register.php");
+				return;
+			}
+			
+			if (strlen($username) > 16)
+				$registerErrors[] = "Please enter a username under 17 characters.";
+			
+			if ($password != $password2)
+				$registerErrors[] = "Passwords do not match.";
+			
+			if (empty($registerErrors))
+			{
+				$auth = new AuthenticationService();
+				
+				$registerSuccess = $auth->registerAccount($username, $password);
+				
+				if ($registerSuccess)
+					return $this->login();
+				
+				$registerErrors[] = $auth->error;
+			}
+		}
+		
+		require_once("Views/Account/register.php");
+	}
+	
 	public function login()
 	{
 		if (isset($_POST["username"], $_POST["password"]))

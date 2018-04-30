@@ -4,7 +4,7 @@
 			<div class="col-lg-8 mx-auto">
 				<h2>Login</h2>
 				<p class="lead">Login to access account management</p>
-				
+				<p class="lead">Don't have an account? <a href="?controller=Account&action=register">Click here to register</a></p>
 				<strong style="color: red">
 				<?php if (isset($error)) echo $error; ?>
 				</strong>

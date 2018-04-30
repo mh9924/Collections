@@ -4,6 +4,38 @@ class AuthenticationService
 	
 	public $error;
 	
+	public function registerAccount(string $username, string $password)
+	{
+		$db = Database::getInstance();
+		
+		$usernameExistsStmt = $db->prepare("
+			SELECT *
+			FROM User
+			WHERE Username = :username
+		");
+		
+		$usernameExistsStmt->execute(array("username" => $username));
+		
+		if ($usernameExistsStmt->rowCount() == 1)
+		{
+			$this->error = "Username is already in use";
+			return false;
+		}
+		
+		$registerAccStmt = $db->prepare("
+			INSERT INTO User
+			(Username, Password, RegistrationDate)
+			VALUES
+			(:username, :password, :registrationDate)
+		");
+		
+		$hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+		
+		$registerAccStmt->execute(array("username" => $username, "password" => $hashedPassword, "registrationDate" => time()));
+		
+		return true;
+	}
+	
 	public function checkLogin(string $username, string $password)
 	{
 		
