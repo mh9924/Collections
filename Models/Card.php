@@ -137,9 +137,10 @@ class Card
 			SELECT DeckID, Name, GameID
 			FROM Card
 			JOIN Belongs_To ON Belongs_To.CardID = Card.ID
+			WHERE Card.ID = :id
 		");
 		
-		$stmt->execute();
+		$stmt->execute(array("id" => $this->id));
 		
 		foreach ($stmt->fetchAll() as $deck)
 			$decks[] = new Deck($deck["DeckID"], $deck["Name"], $deck["GameID"]);
