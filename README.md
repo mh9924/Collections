@@ -23,7 +23,7 @@ WHERE Card.ID = :id
       
 - [ ] **Self Join**
 
-- [x] **Aggregate Function** - Counts how many cards are in an individual's collection by a given game ID (used for displaying # cards on cards page and user profile):
+- [x] **Aggregate Function** - Counts how many cards are in an individual's collection by a given game ID (used for displaying # cards on games page and user profile):
 
 ```sql
 SELECT COUNT(GameID)
